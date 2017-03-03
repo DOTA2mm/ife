@@ -1,10 +1,13 @@
 @base: #50a14f;
 @transition-fn: transition-timing-function;
 
-* {
+*, ::before, ::after {
   box-sizing: border-box;
 }
-body, div, img, button, input {
+html {
+  font-family: "Segoe UI",'Microsoft Yahei',Helvetica,Arial;
+}
+body, div, h1, img, button, input {
   margin: 0;
   padding: 0;
 }
@@ -15,90 +18,128 @@ button {
 }
 body {
   background-color: lighten(@base, 50%);
-  height: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .container {
   max-width: 400px;
   height: 230px;
-  margin: 100px auto;
   position: relative;
+  display: flex;
+  &:hover {
+    .bg { // 背景
+      filter: blur(8px);
+    }
+    .topic::before { // 边框
+      width: 100%;
+    }
+    .topic::after {
+      height: 100%;
+    }
+    .slideIn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 .container .bg {
   width: 100%;
   height: 100%;
-  transition: all .3s ease-in;  
-  background: url(/images/jaychou.jpg) 0 0 no-repeat;
+  transition: filter 1s;  
+}
+.container .caption {
+  width: 100%;
+  height: 100%;
+  padding: 5%;
   position: absolute;
-  top: 0;
-  left: 0;
-}
-.container:hover .bg {
-  filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
-  -webkit-filter: blur(5px); /* Chrome, Opera */
-      -moz-filter: blur(5px);
-      -ms-filter: blur(5px);    
-          filter: blur(5px);
-}
-.container .btn {
-  width: 80%;
-  height: 80%;
-  position: relative;
-  left: 10%;
-  top: 10%;
-  font-size: 24pt;
-  font-weight: 600;
-
+  z-index: 1;
 }
 
-/*border*/
+// 过渡效果的边框
 #border() {
   content: '';
-  background-color: #fff;
+  border: 3px solid #fff;
   position: absolute;
+  transition-duration: .8s;
+  @{transition-fn}: ease-in-out;
 }
-#hor-border() {
+#hor-border() { // 横向边框
+  #border();
+  width: 0;
+  height: 100%;
+}
+#ver-border() { // 纵向边框
   #border();
   width: 100%;
-  height: 5px;
-  transform: scaleX(0);
-  transition-duration: .5s;
-  @{transition-fn}: ease-in-out;
+  height: 0;
 }
-
-.btn .border-hor::before {
-  #hor-border();
-  top: 0;
-  left: 0;
-}
-.btn .border-hor::after {
-  #hor-border();
-  bottom: 0;
-  left: 0;
-}
-.btn:hover .border-hor::before,
-.btn:hover .border-hor::after {
-  transform: scaleX(1);
-}
-
-#ver-border() {
-  #border();
-  width: 5px;
+.caption .topic {
+  width: 100%;
   height: 100%;
-  transform: scaleY(0);
-  transition-duration: .5s;
-  @{transition-fn}: ease-in-out;
-}
-.btn .border-ver::before {
-  #ver-border();
+  position: relative;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
-.btn .border-ver::after {
+.caption .topic::before { // 横向边框
+  #hor-border();
+  border-width: 3px 0;
+}
+.caption .topic::after { // 纵向边框
   #ver-border();
-  top: 0;
-  right: 0;
+  border-width: 0 3px;
 }
-.btn:hover .border-ver::before,
-.btn:hover .border-ver::after {
-  transform: scaleX(1);
+
+
+// 流光渐变文字动画
+.caption .slogan {
+  background-image: -webkit-linear-gradient(left,#3498db,#f47920 10%,#d71345 20%,#f7acbc 30%,#ffd400 40%,#3498db 50%,#f47920 60%,#d71345 70%,#f7acbc 80%,#ffd400 90%,#3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: streamer 2s infinite linear;
+  margin-bottom: .3em;
+}
+@keyframes streamer {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+// 按钮
+.caption .link {
+  animation: blink 2s infinite linear;
+  z-index: 1;
+  cursor: pointer;
+  font-weight: 600;
+}
+@keyframes blink {
+  0% {
+    color: deeppink;
+  }
+  25% {
+    color: hotpink;
+  }
+  50% {
+    color: lightpink;
+  }
+  75% {
+    color: pink;
+  }
+  100% {
+    color: deeppink;
+  }
+}
+.slideIn {
+  transition: all .5s ease .5s;
+  transform: translateY(30px);
+  opacity: 0;
 }
