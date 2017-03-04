@@ -15,3 +15,7 @@
 这个任务虽然比较小，但是确实最基础很好的回顾。任务中的`Observer`实现是绝大多数`MVVM`框架实现动态数据绑定的基本原理。  
 本例完全使用了`ES6`语法，让代码更简洁易懂，用`Babel`编译成`ES5`实现兼容。  
 本来想拆分下相应代码，熟悉下`webpack`，结果意外造成“循环加载”。。
+
+#### 参考资料
+- [vue早期源码学习系列之一：如何监听一个对象的变化](https://github.com/youngwind/blog/issues/84)
+- [vue 源码分析之如何实现 observer 和 watcher](https://segmentfault.com/a/1190000004384515)
