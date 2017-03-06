@@ -17,7 +17,23 @@ class Event {
     })
   }
   // 触发事件
-  emit (type, ...args) {
+  emit (type, ...args) { // 改写事件触发器
+    const keys = type.split('.') // 可以传入一个键路径
+    const depPaths = keys.map((key, index) => {
+      if (index === 0) {
+        return key
+      } else {
+        let str = ''
+        while (index--) str = keys[index] + '.' + str
+        return str + key
+      }
+    })
+    depPaths.forEach(path => {
+      const handlers = this.events[path]
+      if (handlers && handlers.length) {
+        handlers.forEach(handler => handler(this.$getValue(path)))
+      }
+    })
     this.events[type] && this.events[type].forEach(handler => handler(...args)) // 两次使用...运算符，避免保存局部变量
   }
 }
