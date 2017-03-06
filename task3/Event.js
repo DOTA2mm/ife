@@ -1,5 +1,5 @@
 class Event {
-  constructor  () {
+  constructor () {
     this.events = {}
   }
   // 添加事件
@@ -7,7 +7,7 @@ class Event {
     if (!this.events[type]) { // 第一次为该类型添加处理函数
       this.events[type] = [handler] // 使用数组来保存同一类型下的事件处理函数
     } else {
-      this.events[type].push(handler)      
+      this.events[type].push(handler)
     }
   }
   // 取消事件

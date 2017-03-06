@@ -18,4 +18,4 @@ app.$watch('age', function (oldVal, newVal) {
   console.log(`我的年龄真的变了诶，竟然年轻了${oldVal - newVal}岁`) // 我的年龄真的变了诶，竟然年轻了-1岁
 })
 
-app.data.age = 26;
+app.data.age = 26
