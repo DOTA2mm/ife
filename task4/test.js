@@ -1,18 +1,34 @@
 import Observer from './Observer'
 
-let app2 = new Observer({
-  name: {
-    firstName: 'shaofeng',
-    lastName: 'liang'
-  },
-  age: 25
+let app3 = new Observer({
+  user: {
+    name: {
+      firstName: 'shaofeng',
+      lastName: 'liang'
+    },
+    age: 25
+  }
 })
 
-app2.$watch('name', function (newName) {
-  console.log('我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。')
+app3.$watch('user', function (newName) {
+  console.log('这是加在user上的事件')
+})
+app3.$watch('user.name', function (newName) {
+  console.log('这是加在user.name上的事件')
+})
+app3.$watch('user.name.firstName', function (newName) {
+  console.log('这是加在user.name.firstName上的事件')
 })
 
-app2.data.name.firstName = 'hahaha'
-// 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
-app2.data.name.lastName = 'blablabla'
-// 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
+app3.data.user.name.firstName = 'hahaha'
+
+// 你访问了user
+// 这是加在user上的事件
+// 你访问了user
+// 你访问了name
+// 这是加在user.name上的事件
+// 你访问了user
+// 你访问了name
+// 你访问了firstName
+// 这是加在user.name.firstName上的事件
+// "hahaha"
