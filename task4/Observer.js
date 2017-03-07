@@ -1,5 +1,3 @@
-import Event from './Event'
-
 class Observer {
   constructor (data) {
     this.data = data
@@ -7,47 +5,43 @@ class Observer {
     this.eventsBus = {} // 在构造器中添加事件总线
   }
   walk (data, path) {
-    if (!data || typeof data !== 'object') return // 传入的是非对象
-    
     Object.keys(data).forEach(key => { // for-in 会枚举其原型链上的属性而Object.keys不会
-      if (typeof data[key] === 'object') { // 深层次嵌套
-        new Observer(data[key])
-      }
-      this.convert(key, data[key], path)
+      this.defineReactive(data, key, data[key], path)
     })
   }
+  // 深度监控
   observe (value, path) {
-
+    if (!value || typeof value !== 'object') return
+    if (path) path = path + '.'
+    this.walk(value, path)
   }
-  convert (key, value, path) {
-    let self = this
+  defineReactive (obj, key, value, path) {
     if (!path) {
       path = key
     } else {
       path += '.' + key
     }
-    Object.defineProperty(this.data, key, {
+    this.observe(value, path)
+    Object.defineProperty(obj, key, {
       enumerable: true,
       configurable: true,
-      get () {
+      get: () => {
         console.log('你访问了：' + key)
         return value
       },
-      set (newVal) {
+      set: (newVal) => {
         if (newVal === value) return
         // console.log('你设置了：' + key + ',新的 ' + key + ' = ' + newVal)
-        self.$notify(path || key)
-        if (newVal && typeof newVal === 'object') { // 设置的新值是一个对象
-          new Observer(newVal)
-        }
+        this.$notify(path || key)
+        this.observe(newVal, path)
         value = newVal
       }
     })
   }
-  $watch (type, handler) { // 订阅事件
+  $watch (key, handler) { // 订阅事件
     if (typeof handler === 'function') {
-      if (!this.eventsBus[type]) this.eventsBus[type] = []
-      this.eventsBus[type].push(handler)
+      if (!this.eventsBus[key]) this.eventsBus[key] = []
+      this.eventsBus[key].push(handler)
     }
   }
   $notify (path) {
@@ -79,5 +73,4 @@ class Observer {
 }
 
 window.Observer = Observer
-
 export default Observer
