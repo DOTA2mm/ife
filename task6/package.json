@@ -1,0 +1,25 @@
+{
+  "name": "task6",
+  "version": "1.0.0",
+  "description": "dynamic data binding",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Vue",
+    "dynamic",
+    "binding"
+  ],
+  "author": "Chuck",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.2.1",
+    "http-server": "^0.9.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
