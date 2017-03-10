@@ -1,13 +1,14 @@
 {
   "name": "task4",
   "version": "1.0.0",
-  "description": "ife Observer",
+  "description": "dynamic data binding",
   "main": "main.js",
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Observer"
+    "MVVM dynamic-binding"
   ],
   "author": "Chuck <dota2mm@163.com>",
   "license": "MIT",

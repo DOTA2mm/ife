@@ -4,6 +4,3 @@
 
 #### 总结
 实现`Vue`的'静态绑定'，从功能上看，像一个模板解析引擎。
-
-#### 参考资料
-- [Vue.js源码中对于deep watching的巧妙实现](http://ife.baidu.com/note/detail/id/358)

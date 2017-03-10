@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dynamic data binding</title>
+  <script src="./dist/main.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-bind:class='name'>姓名：{{user.name}}</p>
+    <p>年龄：{{user.age}}</p>
+</div>
+<script>
+  let app = new MVVM({
+  el: '#app',
+  data: {
+    user: {
+      name: 'youngwind',
+      age: 25
+    }
+  }
+});
+</script>
+</body>
+</html>
