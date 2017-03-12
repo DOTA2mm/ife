@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 5</title>
+</head>
+<body>
+<div id="app">
+  <p>姓名：{{user.name}}</p>
+  <p>年龄：{{user.age}}</p>
+
+  <label>输入姓名:</label>
+  <input type="text" v-model="user.name">
+  <br>
+  <label>输入年龄:</label>
+  <input type="text" v-model="user.age">
+
+  <button @click="addAge">年龄涨一岁</button>
+</div>
+<script src="dist/task6-1.0.0.min.js"></script>
+<script>
+  const vm = window.vm = new MVVM({
+    el: '#app',
+    data: {
+      user: {
+        name: 'Lei Jiang',
+        age: 10
+      }
+    },
+    methods: {
+      addAge() {
+        this.user.age++
+      }
+    }
+  })
+</script>
+</body>
+</html>

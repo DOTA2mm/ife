@@ -30,16 +30,16 @@ module.exports = function (env = {}) {
     loaders.push({
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
-      loaders: 'babel-loder',
+      loaders: 'babel-loader',
       query: babelConf
     })
   }
 
   return {
-    entry: './lib/app.js',
+    entry: './src/main.js',
     output: {
       filename: `${name}.js`,
-      path: path.resole(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist'),
       publicPath: '/static/js/',
       library: `${library}`,
       libraryTarget: 'umd'
