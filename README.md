@@ -10,7 +10,7 @@
 - [x] [动态数据绑定（二）](http://ife.baidu.com/course/detail/id/20)
 - [x] [动态数据绑定（三）](http://ife.baidu.com/course/detail/id/21)
 - [x] [动态数据绑定（四）](http://ife.baidu.com/course/detail/id/22)
-- [ ] [动态数据绑定（五）](http://ife.baidu.com/course/detail/id/24)
+- [x] [动态数据绑定（五）](http://ife.baidu.com/course/detail/id/24)
 - [ ] [自定义网页右键菜单](http://ife.baidu.com/course/detail/id/26)
 - [ ] [使用CSS实现折叠面板](http://ife.baidu.com/course/detail/id/27)
 - [ ] [正则表达式之入门](http://ife.baidu.com/course/detail/id/29)
