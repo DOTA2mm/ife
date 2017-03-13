@@ -1,11 +1,15 @@
 import Dep from './dep'
 
+/**
+ * 对传入主构造器中的data成员进行监视
+ * @constructor
+ */
 class Observer {
   constructor (value) {
     this.value = value
     this.dep = new Dep()
     this.walk(value)
-    Object.defineProperty(value, '__ob__', {
+    Object.defineProperty(value, '__ob__', { // 为传入构造器的对象添加不可枚举的属性__ob__指向Observer实例
       value: this,
       writable: true,
       enumerable: false,
@@ -45,6 +49,11 @@ class Observer {
 
 const hasOwn = (obj, key) => Object.hasOwnProperty.call(obj, key)
 
+/**
+ * 监视data深层次嵌套的对象
+ * @param {Object} value 添加监视的对象
+ * @return {Object} ob
+ */
 const observe = value => {
   if (!value || typeof value !== 'object') return
   let ob

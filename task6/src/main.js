@@ -2,11 +2,15 @@ import Compile from './compile'
 import {observe} from './observer'
 import Watcher from './watcher'
 
+/**
+ * 主构造器
+ * @constructor
+ */
 class MVVM {
   constructor (options) {
     const data = this._data = options.data
     this.$options = options
-    Object.keys(data).forEach(key => this._proxy(key))
+    Object.keys(data).forEach(key => this._proxy(key)) // 对实例成员设置代理
     observe(data)
     new Compile(options.el || document.body, this)
   }
