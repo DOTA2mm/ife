@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+div,
+p,
+ul,
+li,
+h1,
+label {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: #333;
+  font-size: 14px;
+  font-family: "Segoe UI",'Microsoft Yahei',Helvetica,Arial;
+  margin: 0 50px;
+}
+input {
+  outline: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+p {
+  line-height: 2em;
+  padding-left: 2em; 
+}
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 1.8em;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #666;
+}
+h2 {
+  font-size: 1.2em;
+  font-weight: normal;
+}
+fieldset {
+  padding: 1em 2em;
+}
+legend {
+  font-size: 1.2em;
+}
+
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.info{
+  margin-bottom: 1.2em;
+}
+.result {
+  margin-top: 1.2em;
+}
+.input-group {
+  margin: 1.5em 0;
+  line-height: 2em;
+  vertical-align: middle;
+}
+.input-group label {
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+.input-group input {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid #aaa;
+}
+.input-box {
+  width: calc(100% - 150px);
+  display: inline-block;
+  position: relative;
+}
+.input-box .select {
+  width: 100%;
+  padding-right: 30px;
+}
+/*下拉箭头*/
+.input-group .arrow-down {
+  border-left: 1px solid #aaa;
+  width: 28px;
+  height: 27px;
+  overflow: hidden;
+  position: absolute; 
+  top: 1px;
+  right: 0;
+}
+.arrow-down::after {
+  content: "";
+  border: 8px solid transparent;
+  border-top: 12px solid #333;
+  border-bottom-width: 4px;
+  cursor: pointer;
+  position:  relative;
+  top: 18px;
+  left: 5px;
+}
+.opt-card {
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 28;
+  left: 0;
+  display: none;
+}
+.option {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding-left: 10px;
+}
+.option:hover {
+  background-color: #eee;
+}
+input.check-btn {
+  cursor: pointer;
+  text-align: center;
+  padding: 0 20px;
+  border: 1px solid #42b983;
+  background-color: #42b983;
+  color: #fff;
+  display: block;
+  margin: auto;
+  transition: all .3s linear;
+}
+input.check-btn:hover {
+  color: #42b983;
+  background-color: #fff;
+  border: 1px solid #42b983;
+}
+input.check-btn:active {
+  background-color: #eee;
+}
+.result .success {
+  color: green;
+}
+.result .fail {
+  color: red
+}
+@media only screen and (max-width: 360px) {
+	.input-box {
+		width:100%;
+	}
+}
