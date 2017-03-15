@@ -82,6 +82,7 @@ legend {
   position: relative;
 }
 .input-box .select {
+  font-family: consolas;
   width: 100%;
   padding-right: 30px;
 }
