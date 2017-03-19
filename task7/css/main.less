@@ -1,0 +1,56 @@
+html,
+body,
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  list-style: none;
+  line-height: 2em;
+}
+body {
+  font-family: 'MircoSoft Yahei';
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+#context-menu {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  width: 265px;
+  height: 220px;
+  padding: .5em 0;
+  box-shadow: 5px 5px 3px -3px #999;
+  li {
+    display: flex;
+    justify-content: space-between; //主轴上的对齐方式
+    align-items: center;
+    padding: 0 1.5em;
+  }
+  .item-name {
+    text-align: left;
+    align-self: flex-start
+  }
+  .key {
+    text-align: right;
+    align-self: flex-end;
+    color: #999;
+  }
+  .group-line {
+    padding-bottom: .5em;
+    position: relative;
+      &::after {
+        content: "";
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+  }
+  .group-line + li {
+    padding-top: .6em;
+  }
+  display: none;
+  position: absolute;
+}
