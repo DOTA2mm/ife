@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --quiet & http-server -c-1 -p 8081",
-    "build": "webpack --env.production"
+    "dev": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline",
+    "build": "webpack --env.production --progress --colors"
   },
   "keywords": [
     "Vue",

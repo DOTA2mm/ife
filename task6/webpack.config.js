@@ -7,7 +7,7 @@ module.exports = function (env = {}) {
   let name = packageConf.name
   let version = packageConf.version
   let library = name.replace(/^(\w)/, m => m.toUpperCase())
-  let proxPort = 8081
+  let proxPort = 9000
   let plugins = []
   let loaders = []
 
@@ -40,7 +40,7 @@ module.exports = function (env = {}) {
     output: {
       filename: `${name}.js`,
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/static/js/',
+      publicPath: 'http://localhost:9000/dist/',
       library: `${library}`,
       libraryTarget: 'umd'
     },
@@ -49,9 +49,7 @@ module.exports = function (env = {}) {
       loaders: loaders
     },
     devServer: {
-      proxy: {
-        '*': `http://127.0.0.1:${proxPort}`
-      }
+      port: `${proxPort}`
     }
   }
 }
